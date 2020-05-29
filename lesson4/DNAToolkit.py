@@ -57,27 +57,15 @@ def translate_seq(seq, init_pos=0):
 	return [DNA_Codons[seq[pos:pos + 3]] for pos in range(init_pos, len(seq) - 2, 3)]
 
 
-# def codon_usage(seq, aminoacid):
-# 	"""Provides frequency of each codon encoding a given amino acid in a DNA sequence"""
-# 	tmpList = []
-# 	for i in range(0, len(seq) - 2, 3):
-# 		if DNA_Codons[seq[i:i + 3] == aminoacid:
-# 			tmpList.append(seq[i:i + 3])
+def codon_usage(seq, aminoacid):
+	"""Provides frequency of each codon encoding a given amino acid in a DNA sequence"""
+	tmpList = []
+	for i in range(0, len(seq) - 2, 3):
+		if DNA_Codons[seq[i:i + 3] == aminoacid:
+			tmpList.append(seq[i:i + 3])
 
-# 	freqDict = dict(collections.Counter(tmpList)) #CANNOT FIGURE OUT WHY THIS DOESN'T WORK
-# 	totalWight = sum(freqDict.values())
-# 	for seq in freqDict:
-# 		freqDict[seq] = round(freqDict[seq] / totalWight, 2)
-# 	return freqDict
-
-
-def gen_reading_frames(seq):
-	"""generates six reading frames of a DNA sequence, 3 each from template and reverse complement string"""
-	frames = []
-	frames.append(translate_seq(seq, 0))
-	frames.append(translate_seq(seq, 1))
-	frames.append(translate_seq(seq, 2))
-	frames.append(translate_seq(reverse_complement(seq), 0))
-	frames.append(translate_seq(reverse_complement(seq), 1))
-	frames.append(translate_seq(reverse_complement(seq), 2))
-	return frames
+	freqDict = dict(collections.Counter(tmpList)) #CANNOT FIGURE OUT WHY THIS DOESN'T WORK
+	totalWight = sum(freqDict.values())
+	for seq in freqDict:
+		freqDict[seq] = round(freqDict[seq] / totalWight, 2)
+	return freqDict
